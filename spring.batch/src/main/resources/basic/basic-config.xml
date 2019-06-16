@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+     	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd" >
+
+   
+   <!-- Defining a job--> 
+   <batch:job id = "helloWorldJob">  
+      <!-- Defining a Step --> 
+      <batch:step id = "step1"> 
+         <tasklet ref = "tasklet"/>   
+      </batch:step>    
+   </batch:job>
+   
+   <!-- Defining a bean --> 
+   <bean id = "tasklet" class = "br.study.spring.batch.basic.MyTasklet" />   
+   
+   	<!-- ###### CONFIG ###### -->
+
+	<bean id="jobLauncher"
+		class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+		<property name="jobRepository" ref="jobRepository" />
+	</bean>
+	
+	<!-- MapJobRepository. is not recommended for production use. --> 
+	<!--  Without datasource, the framework automatically switches to use the MapJobRepository. -->
+	<bean id="jobRepository"
+		class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" />
+
+</beans>

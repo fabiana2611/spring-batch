@@ -62,7 +62,8 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="sql">
 			<value> 
-            <![CDATA[insert into details.tutorials (tutorial_id, tutorial_author, tutorial_title, 
+            <![CDATA[
+            		insert into details.tutorials (tutorial_id, tutorial_author, tutorial_title, 
                submission_date, tutorial_icon, tutorial_description) 
                values (:tutorial_id, :tutorial_author, :tutorial_title, :submission_date, 
                :tutorial_icon, :tutorial_description)]]>

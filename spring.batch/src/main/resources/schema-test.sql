@@ -1,3 +1,5 @@
+-- From https://www.tutorialspoint.com/spring_batch/spring_batch_xml_to_mysql.htm
+
 CREATE TABLE details.TUTORIALS( 
    tutorial_id int(10) NOT NULL, 
    tutorial_author VARCHAR(20), 

@@ -1,18 +1,17 @@
 package br.study.spring.batch.database.configxml;
 
-public class Tutorial {
+import java.io.Serializable;
+
+public class Tutorial implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	private int tutorial_id;
 	private String tutorial_author;
 	private String tutorial_title;
 	private String submission_date;
 	private String tutorial_icon;
 	private String tutorial_description;
-
-	@Override
-	public String toString() {
-		return " [id=" + tutorial_id + ", author=" + tutorial_author + ", title=" + tutorial_title + ", date="
-				+ submission_date + ", icon =" + tutorial_icon + ", description = " + tutorial_description + "]";
-	}
 
 	public int getTutorial_id() {
 		return tutorial_id;
@@ -60,5 +59,12 @@ public class Tutorial {
 
 	public void setTutorial_description(String tutorial_description) {
 		this.tutorial_description = tutorial_description;
+	}
+
+	@Override
+	public String toString() {
+		return " [Tutorial id=" + tutorial_id + ", " + "Tutorial Author=" + tutorial_author + "," + " Tutorial Title="
+				+ tutorial_title + ", " + "Submission Date=" + submission_date + "tutorial_icon: " + tutorial_icon
+				+ ", " + "tutorial_description: " + tutorial_description + "]";
 	}
 }

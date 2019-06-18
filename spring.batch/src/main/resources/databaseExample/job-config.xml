@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:batch="http://www.springframework.org/schema/batch"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -10,37 +11,48 @@
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
 		http://www.springframework.org/schema/util     
         http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+        -->
+<beans xmlns = "http://www.springframework.org/schema/beans" 
+   xmlns:batch = "http://www.springframework.org/schema/batch" 
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+   xmlns:util = "http://www.springframework.org/schema/util" 
+   xsi:schemaLocation = "http://www.springframework.org/schema/batch 
+    
+      http://www.springframework.org/schema/batch/spring-batch-2.2.xsd 
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+      http://www.springframework.org/schema/util     
+      http://www.springframework.org/schema/util/spring-util-3.0.xsd ">      
 
 	<import resource="classpath*:databaseExample/context.xml" />
 
-	<batch:job id="helloWorldJob">
+	<batch:job id="jobInit">
 		<batch:step id="step1">
 			<batch:tasklet>
-				<batch:chunk reader="xmlItemReader"
+				<batch:chunk reader="xmlReader"
 					writer="dbItemWriter" processor="itemProcessor" commit-interval="10">
 				</batch:chunk>
 			</batch:tasklet>
 		</batch:step>
 	</batch:job>
 
-	<bean id="xmlItemReader"
-		class="org.springframework.batch.item.xml.StaxEventItemReader">
+	<bean id="xmlReader" class="org.springframework.batch.item.xml.StaxEventItemReader">
 		<property name="fragmentRootElementName" value="tutorial" />
-		<property name="resource"
-			value="classpath:resources/datasource.xml" />
+		<property name="resource" value="classpath:resources/datasource.xml" />
 		<property name="unmarshaller" ref="customUnMarshaller" />
+		<!-- 
 		<property name = "rowMapper"> 
 	         <bean class = "br.study.spring.batch.database.configxml.TutorialFieldSetMapper" /> 
 	     </property> 
+		 -->
 	</bean>
 	
-	<bean id="customUnMarshaller"
-		class="org.springframework.oxm.xstream.XStreamMarshaller">
-		<property name="aliases">
-			<util:map id="aliases">
-				<entry key="tutorial" value="br.study.spring.batch.database.configxml.Tutorial" />
-			</util:map>
-		</property>
+	<bean id="customUnMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+	    <property name="aliases">
+        		<util:map id="aliases">
+                <entry key="tutorial" value="br.study.spring.batch.database.configxml.Tutorial" />
+        		</util:map>
+        </property>
 	</bean>
 	
 	<bean id="itemProcessor" class="br.study.spring.batch.database.configxml.CustomItemProcessor" />
@@ -53,7 +65,7 @@
             <![CDATA[insert into details.tutorials (tutorial_id, tutorial_author, tutorial_title, 
                submission_date, tutorial_icon, tutorial_description) 
                values (:tutorial_id, :tutorial_author, :tutorial_title, :submission_date, 
-               :tutorial_icon, :tutorial_description);]]>
+               :tutorial_icon, :tutorial_description)]]>
 			</value>
 		</property>
 

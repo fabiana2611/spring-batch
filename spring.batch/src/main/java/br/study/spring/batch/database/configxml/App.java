@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
 
 	public static void main(String[] args) throws Exception { 
-	      String[] springConfig  = {    "databaseExample/job-config.xml" };  
+	      String[] springConfig  = { "databaseExample/job-config.xml" };  
 	      
 	      // Creating the application context object  
 	      ApplicationContext context = new ClassPathXmlApplicationContext(springConfig);  
@@ -19,7 +19,7 @@ public class App {
 	      JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher"); 
 	   
 	      // Creating the job 
-	      Job job = (Job) context.getBean("helloWorldJob"); 
+	      Job job = (Job) context.getBean("jobInit"); 
 	   
 	      // Executing the JOB 
 	      JobExecution execution = jobLauncher.run(job, new JobParameters()); 

@@ -30,4 +30,10 @@ http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd">
 		<property name="password" value="" />
 	</bean>
 	
+	<!-- create job-meta tables automatically --> 
+   <jdbc:initialize-database data-source = "dataSource">   
+      <jdbc:script location = "org/springframework/batch/core/schema-drop-h2.sql"/>   
+      <jdbc:script location = "org/springframework/batch/core/schema-h2.sql"/> 
+   </jdbc:initialize-database> 
+	
 </beans>

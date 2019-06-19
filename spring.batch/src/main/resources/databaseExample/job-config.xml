@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:batch="http://www.springframework.org/schema/batch"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:util = "http://www.springframework.org/schema/util" 
-	xsi:schemaLocation="http://www.springframework.org/schema/batch
-     	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
-		http://www.springframework.org/schema/beans
-		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
-		http://www.springframework.org/schema/util     
-        http://www.springframework.org/schema/util/spring-util-3.0.xsd">
-        -->
 <beans xmlns = "http://www.springframework.org/schema/beans" 
    xmlns:batch = "http://www.springframework.org/schema/batch" 
    xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
@@ -40,11 +28,7 @@
 		<property name="fragmentRootElementName" value="tutorial" />
 		<property name="resource" value="classpath:resources/datasource.xml" />
 		<property name="unmarshaller" ref="customUnMarshaller" />
-		<!-- 
-		<property name = "rowMapper"> 
-	         <bean class = "br.study.spring.batch.database.configxml.TutorialFieldSetMapper" /> 
-	     </property> 
-		 -->
+		<property name="strict" value="false" />
 	</bean>
 	
 	<bean id="customUnMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">

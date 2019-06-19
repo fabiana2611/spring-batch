@@ -1,1 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?><javaBeans><javaBean id="101"><author>Joao</author><submission_date>06/05/2019</submission_date><title>Learn Java</title></javaBean><javaBean id="102"><author>Maria F</author><submission_date>19/04/2019</submission_date><title>Learn MySQL</title></javaBean><javaBean id="103"><author>Karlos Soares</author><submission_date>06/07/2019</submission_date><title>Learn JavaFX</title></javaBean></javaBeans>
+<?xml version="1.0" encoding="UTF-8"?>
+<javaBeans>
+	<javaBean id="101">
+		<author>Joao</author>
+		<submission_date>06/05/2019</submission_date>
+		<title>Learn Java</title>
+	</javaBean>
+	<javaBean id="102">
+		<author>Maria F</author>
+		<submission_date>19/04/2019</submission_date>
+		<title>Learn MySQL</title>
+	</javaBean>
+	<javaBean id="103">
+		<author>Karlos Soares</author>
+		<submission_date>06/07/2019</submission_date>
+		<title>Learn JavaFX</title>
+	</javaBean>
+</javaBeans>

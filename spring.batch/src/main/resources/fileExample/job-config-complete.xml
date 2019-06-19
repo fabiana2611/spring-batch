@@ -10,8 +10,6 @@
 
 	<!-- ###### JOBS ######  -->
 
-	<bean id="report" class="Report" scope="prototype" />
-
 	<batch:job id="jobTest">
 		<batch:step id="step1">
 			<batch:tasklet>
